@@ -68,13 +68,19 @@ public class Make_Path : MonoBehaviour {
 
         }
 
-		_cellGap = (1.0f/(float)_Vertex.Count);
-        for (int i = 0; i < _Vertex.Count/4; ++i)
+        if(_Vertex.Count<=20)
+		    _cellGap = (1.0f/((float)(_Vertex.Count/2)-1));
+        else
         {
-			_UV.Add(new Vector2(_cellGap * _cell[1].x + _cellGap * i*4 , _cellGap * _cell[1].y + _cellGap+ _cellGap * i*4));
-			_UV.Add(new Vector2(_cellGap * _cell[1].x + _cellGap+ _cellGap * i*4 , _cellGap * _cell[1].y + _cellGap+ _cellGap * i*4));
-			_UV.Add(new Vector2(_cellGap * _cell[1].x + _cellGap+ _cellGap * i*4 , _cellGap * _cell[1].y+ _cellGap * i*4));
-			_UV.Add(new Vector2(_cellGap * _cell[1].x+ _cellGap * i*4   , _cellGap * _cell[1].y+ _cellGap * i*4));
+            _cellGap = 1.0f/9.0f;
+
+        }
+
+
+        for (int i = 0; i < _Vertex.Count/2; ++i)
+        {
+			_UV.Add(new Vector2( _cellGap * i                  , _cell[1].y));
+			_UV.Add(new Vector2( _cellGap * i ,        _cell[0].y));
         }
         mesh.Clear();
         mesh.vertices = _Vertex.ToArray();

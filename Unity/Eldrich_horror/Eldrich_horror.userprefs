@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Make_Path.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\Bezier\BezierPath.cs">
     <Files>
       <File FileName="Assets\Make_Path.cs" Line="48" Column="60" />
+      <File FileName="Assets\Plugins\Bezier\BezierPath.cs" Line="51" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -9,10 +9,11 @@ public enum Type_sub {sub_city = 0x10, sub_jungle = 0x20, sub_sea = 0x40 };
 
 
 public class Location : MonoBehaviour {
-    public MeshRenderer [] Location_Path;    
 
     public Type_loc MainType;
     public Type_sub SubType;
+    //경로 리스트
+    public MeshRenderer[] Location_Path;
     private void OnMouseEnter()
     {
         for(int i=0;i<Location_Path.Length ;++i)
@@ -30,5 +31,5 @@ public class Location : MonoBehaviour {
         }
     }
 
-   
+    
 }

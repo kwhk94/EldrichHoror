@@ -225,7 +225,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Gameboard_size.cs" />
     <Compile Include="Assets\Script\CameraSystem.cs" />
     <Compile Include="Assets\Script\GameSystem.cs" />
     <Compile Include="Assets\Script\Location.cs" />

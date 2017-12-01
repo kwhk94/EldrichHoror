@@ -31,15 +31,15 @@ public class CameraSystem : MonoBehaviour {
 
     private Vector3 moveDirection;
     private Vector3 forwardvec3;
-    private Transform camera_pos;
+    private Rigidbody camera_rig;
 
     //카메라가 보드 밖으로 나간 방향
     public enum outvec {top = 0x1, bottom = 0x2, right = 0x4, left = 0x8};
     //카메라가 보드밖으로 나간 방향을 16진수로 표현
     public outvec outveclist;
     void Start() {
-        camera_pos = GetComponent<Transform>();
-        forwardvec3 = camera_pos.forward;
+        camera_rig = GetComponent<Rigidbody>();
+        forwardvec3 = transform.forward;
     }
 
 
@@ -76,21 +76,20 @@ public class CameraSystem : MonoBehaviour {
             camera_speed = camera_firstspeed;
         }
         //카메라를 속도에 따라 이동시킨다.
-        camera_pos.position += moveDirection * camera_speed * Time.deltaTime;
+        camera_rig.MovePosition(transform.position + moveDirection * camera_speed * Time.deltaTime);
+        
 
         //마우스 휠로 줌 아웃을 한다.
         if (Input.GetAxis("Mouse ScrollWheel") < 0 && wheelcurrentSize<wheelmaxSize)
         {
-            camera_pos.position -= forwardvec3* wheelspeed * Time.deltaTime;
+            transform.position = (transform.position -forwardvec3* wheelspeed * Time.deltaTime);
             wheelcurrentSize += Time.deltaTime* wheelspeed;
         }
         //마우스 휠로 줌 인한다.
         if (Input.GetAxis("Mouse ScrollWheel") > 0 && wheelcurrentSize > wheelminSize)
         {
-            camera_pos.position += forwardvec3* wheelspeed * Time.deltaTime;
+            transform.position = (transform.position +forwardvec3* wheelspeed * Time.deltaTime);
             wheelcurrentSize -= Time.deltaTime* wheelspeed;
         }
     }
-    
-    
 }

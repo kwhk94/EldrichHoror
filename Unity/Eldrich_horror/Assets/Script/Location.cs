@@ -14,6 +14,9 @@ public class Location : MonoBehaviour {
     public Type_sub SubType;
     //경로 리스트
     public MeshRenderer[] Location_Path;
+    //장소 리스트
+    public Location[] Location_list;
+
     private void OnMouseEnter()
     {
         for(int i=0;i<Location_Path.Length ;++i)

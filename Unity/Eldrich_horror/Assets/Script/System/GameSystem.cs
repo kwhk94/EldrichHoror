@@ -24,6 +24,16 @@ public class GameSystem : MonoBehaviour {
     public delegate void UI_event();
     public event UI_event UI_eventlist;
 
+	//행동, 조우,신화 단계
+	public enum Game_order_Name {Action =0x1, Meeting = 0x2, Myth = 0x4 };
+	//행동 단계에서의 행동들, 이동, 휴식, 자산획득, 이동준비,거래 , 구성물 행동
+	public enum Action_Name { Move = 0x1, Rest = 0x2, Shop = 0x4 ,Ticket = 0x8, Deal = 0x10, Skill = 0x20 };
+
+	//현재 단계
+	public Game_order_Name current_order = Game_order_Name.Myth;
+
+
+
     public void LateUpdate()
     {
         //멸망 토큰의 이동 애니메이션

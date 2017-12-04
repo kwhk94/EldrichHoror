@@ -51,9 +51,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Make_Path.cs" />
-     <Compile Include="Assets\Script\path_mesh.cs" />
+     <Compile Include="Assets\Script\Location.cs" />
+     <Compile Include="Assets\Script\Player_Chracter\Chracter.cs" />
+     <Compile Include="Assets\Script\Player_Chracter\Follower.cs" />
+     <Compile Include="Assets\Script\Player_Chracter\Player.cs" />
+     <Compile Include="Assets\Script\Player_Chracter\SecretAgent.cs" />
      <Compile Include="Assets\Script\SaveSelectMesh.cs" />
+     <Compile Include="Assets\Script\System\CameraSystem.cs" />
+     <Compile Include="Assets\Script\System\GameSystem.cs" />
+     <Compile Include="Assets\Script\test_nav.cs" />
+     <Compile Include="Assets\Script\UI\UI_move_scrip.cs" />
+     <Compile Include="Assets\Script\UI\UI_moveicon.cs" />
+     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+     <None Include="Assets\Standard Assets\Wispy Sky\ReadMe.txt" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

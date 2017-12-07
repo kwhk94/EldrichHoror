@@ -51,12 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Robby_Player.cs" />
      <Compile Include="Assets\Script\Location.cs" />
      <Compile Include="Assets\Script\Player_Chracter\Chracter.cs" />
      <Compile Include="Assets\Script\Player_Chracter\Follower.cs" />
      <Compile Include="Assets\Script\Player_Chracter\Player.cs" />
      <Compile Include="Assets\Script\Player_Chracter\SecretAgent.cs" />
-     <Compile Include="Assets\Script\SaveSelectMesh.cs" />
      <Compile Include="Assets\Script\System\CameraSystem.cs" />
      <Compile Include="Assets\Script\System\GameSystem.cs" />
      <Compile Include="Assets\Script\test_nav.cs" />

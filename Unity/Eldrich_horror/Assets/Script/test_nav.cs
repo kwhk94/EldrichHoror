@@ -16,9 +16,12 @@ public class test_nav : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         LocationMask = LayerMask.GetMask("Location");
     }
-	
+
+
+
 	// Update is called once per frame
 	void Update() {       
+		
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -379,7 +379,6 @@
     <Compile Include="Assets\Script\Location.cs" />
     <Compile Include="Assets\Script\Network\PhotonGameManager.cs" />
     <Compile Include="Assets\Script\Player_Chracter\Chracter.cs" />
-    <Compile Include="Assets\Script\Player_Chracter\chracter_number.cs" />
     <Compile Include="Assets\Script\Player_Chracter\Follower.cs" />
     <Compile Include="Assets\Script\Player_Chracter\Player.cs" />
     <Compile Include="Assets\Script\Player_Chracter\SecretAgent.cs" />

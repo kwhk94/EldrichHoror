@@ -6,13 +6,28 @@ using UnityEngine;
 
 public class LobbyPlayerlist : Photon.PunBehaviour
 {
-    public static LobbyPlayerlist instance;
+    #region 싱글톤
+    private static LobbyPlayerlist instance;
+    public static LobbyPlayerlist Instance
+    {
+        get
+        {
+            if (!instance)
+                instance = FindObjectOfType<LobbyPlayerlist>();
+            if (!instance)
+                Debug.Log("LobbyPlayerlist instance not find");
+            return instance;
+        }
+
+        set { instance = value; }
+    }
+#endregion
+
     public GameObject[] Charcter_list;
 
     public int current_player_number = 0;
     public int current_chracter_number = 0;
-    
-
+    public string[] playerList = new string[6];
     public void Start()
     {
         instance = this;
@@ -20,11 +35,11 @@ public class LobbyPlayerlist : Photon.PunBehaviour
     }
 
 #region 플레이어 번호 확인 및 갱신
-    void SetPlayer_number()
+    public void SetPlayer_number()
     {
         for (int i = 0; i < 6; ++i)
-        {
-            if (PhotonGameManager.Instance.m_player_list[i] == PhotonNetwork.player.NickName)
+        {            
+            if (playerList[i] == PhotonNetwork.player.NickName)
             {
                 current_player_number = i;
                 break;
@@ -37,9 +52,6 @@ public class LobbyPlayerlist : Photon.PunBehaviour
 #region 버튼 클릭시, 플레이어의 캐릭터 갱신 및 바꾸기
     public void Change_playernumber()
     {
-        //플레이어 번호 확인
-        SetPlayer_number();
-
         //플레이어 캐릭터 변경
         current_chracter_number += 1;
         if (current_chracter_number > Charcter_list.Length-1)

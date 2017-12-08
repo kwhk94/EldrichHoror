@@ -2,7 +2,7 @@ WindowsStandalone
 82c8c8940439d24517b71a242f62fbc3 Assembly-CSharp.dll:.HighlightOwnedGameObj
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PunTeams
 4d0187d1ee26ceba125a106f0dde0360 Assembly-CSharp.dll:.SmoothSyncMovement
-eb6abe0aaeb680a9f9e84e3004dfc8bc Assembly-CSharp.dll:.LobbyPlayerlist
+02d5467232313edc276e0b4fe3c6a971 Assembly-CSharp.dll:.LobbyPlayerlist
 e17f92d3b13f18bef6e4629b9bff76dd Assembly-CSharp.dll:.DemoBoxesGui
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -154,7 +154,7 @@ e626bae268f8b272b7a2d07760d262c6 Assembly-CSharp.dll:.PickupController
 1356b4a6096c35c829823b7e28399030 Assembly-CSharp.dll:.HubGui
 c86d595dcda056b3ffb663720e490a4c Assembly-CSharp.dll:.SecretAgent
 96582cbb5a9ab10be6abda594c65a150 Assembly-CSharp.dll:.UI_moveicon
-aab81d32da40e0d281c5210319880305 Assembly-CSharp.dll:.GameSystem
+22054116a5ad9db6672b883e2cbc55b5 Assembly-CSharp.dll:.GameSystem
 5a78906060300940acb71bc3dfb6396d Assembly-CSharp.dll:.DragToMove
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CubeLerp
 9650139907be6d63bf3c3eaa8900f13f Assembly-CSharp.dll:.myThirdPersonController
@@ -176,7 +176,7 @@ cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 ada54cb428213a7e0c4b986e95788f97 Assembly-CSharp.dll:.PhotonTransformView
 c0ad1fb5d400aa83cb257e5f6c3714cf Assembly-CSharp.dll:.OnClickDestroy
 5baa9ead5a48fe99f1d68e645d817c5d Assembly-CSharp.dll:.AudioRpc
-baa1fb7d856ef6eb14b51ed17489e72e Assembly-CSharp.dll:.Player
+90be01dcc822927b4ed61f6e8a66ec63 Assembly-CSharp.dll:.Player
 30c6237931168f8b4c2f10a656a47aa8 Assembly-CSharp.dll:.PickupItem
 b9efe2a0d1c9ba7bc46e66a07a897115 Assembly-CSharp.dll:.ServerSettings
 193bab750082b7155b15efdc912fcb3c Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.Launcher
@@ -212,7 +212,7 @@ ea580b2edab741d1d6e6445b14097645 Assembly-CSharp.dll:.RPGCamera
 cb9b23bb8d8552626640cca26addf6f1 Assembly-CSharp.dll:.FriendItem
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 abe32a93cd37b12375c9475f8f38bec3 Assembly-CSharp.dll:.PunTurnManager
-a83865f837126d64eec95154ab8d0477 Assembly-CSharp.dll:.PhotonGameManager
+1292224ead50ed662c2e2025d51e8f63 Assembly-CSharp.dll:.PhotonGameManager
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 9cb24d80f90c6c239d5304446a0d7f3e Assembly-CSharp.dll:.CubeInter
 c0b17230605b48ee2c8fdf6ad9d187ec Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.CameraWork
@@ -228,7 +228,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 ee8540d1efea9148410a914295c889e3 Assembly-CSharp.dll:.OnJoinedInstantiate
 fe180736ec3bd9cf69fd20bbec04acfb Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.LoaderAnime
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.OnClickRequestOwnership
-1d9dee2ba0c66527915301bcc7cade03 Assembly-CSharp.dll:.chracter_number
 6b7f3b627f03aa2dae54ad0ecb0a7d7a Assembly-CSharp.dll:.PhotonLagSimulationGui
 8e75c7ff572e377afe5aec0a3c77276b Assembly-CSharp.dll:.PickupCamera
 e29eedec83444c5ff91ad08de30f1219 Assembly-CSharp.dll:.GUICustomAuth

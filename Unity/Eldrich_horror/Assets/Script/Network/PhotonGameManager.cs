@@ -6,28 +6,49 @@ using UnityEngine.UI;
 
 
 
-public class PhotonGameManager : Photon.PunBehaviour,IPunObservable
+public class PhotonGameManager : Photon.PunBehaviour, IPunObservable
 {
     #region Public 변수
     //싱글톤
-    static public PhotonGameManager Instance;
+    private static PhotonGameManager instance;
+    public static PhotonGameManager Instance
+    {
+        get
+        {
+            if (!instance)
+                instance = FindObjectOfType<PhotonGameManager>();
+            if (!instance)
+                Debug.Log("PhotonGameManager instance not find");
+            return instance;
+        }
+
+        set { instance = value; }
+    }
+
+
     #endregion
+    #region public 변수
     //플레이어 접속 인원 아이디체크
     public Text[] text_player_list;
     public Text[] text_player_chracter_list;
-
-    //플레이어 이름 리스트 (이름 갱신을 위한 목록
-    public string[] m_player_list = new string[6];
-
+    //플레이어 리스트클래스
     public LobbyPlayerlist player_list_class;
 
-    
+    //로비 패널과 텝페널
+    public GameObject tapPannel;
+    public GameObject lobbyPannel;
+    #endregion
 
+    private bool inGameorRobby = false;
     //포톤뷰
-    private static PhotonView ScenePhotonView;    
+    private static PhotonView ScenePhotonView;
+
+
     // Use this for initialization
-    void Start () {
+    void Start() {
+        DontDestroyOnLoad(this.gameObject);
         Instance = this;
+        player_list_class = LobbyPlayerlist.Instance;
         // 포톤네트워크가 접속이 되지 않으면 메인 화면으로 돌아간다.
         if (!PhotonNetwork.connected)
         {
@@ -36,15 +57,48 @@ public class PhotonGameManager : Photon.PunBehaviour,IPunObservable
             return;
         }
 
-        if(PhotonNetwork.isMasterClient)
+        //마스터클라이언트라면 목록 추가와 갱신을 start에서 해준다.
+        if (PhotonNetwork.isMasterClient)
         {
-            string name = PhotonNetwork.masterClient.NickName;
-            m_player_list[0] = name;
             player_list_class.current_player_number = 0;
+            player_list_class.playerList[0] = PhotonNetwork.player.NickName;
             Update_player_list();
         }
         ScenePhotonView = this.GetComponent<PhotonView>();
     }
+
+    void LateUpdate()
+    {
+        //게임 안에 들어가 있다면?
+        if(inGameorRobby)
+        {
+            //텝키를 누르면 템패널이 뜨게 한다.
+            if(Input.GetKeyDown(KeyCode.Tab)){
+                tapPannel.SetActive(true);
+            }
+            if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                tapPannel.SetActive(false);
+            }
+        }
+    }
+
+    #region 게임 시작 버튼을 누르면 세팅되는 값들
+   
+
+    //마스터클라이언트만 누르면 반응하는 게임 시작 버튼
+    public void StartGame()
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            Debug.Log("마스터클라이언트가 시작을 눌렀습니다.");
+            PhotonNetwork.LoadLevel("GameScene");
+            ScenePhotonView.RPC("StartGameSetting", PhotonTargets.All);
+        }
+    }
+
+
+    #endregion
 
 
     #region 방떠나기 
@@ -58,32 +112,47 @@ public class PhotonGameManager : Photon.PunBehaviour,IPunObservable
     }
     #endregion
 
-
+    #region 플레이어 접속 및 디스커넥트
     //플레이어 접속확인 함수
     public override void OnPhotonPlayerConnected(PhotonPlayer other)
     {
         if (PhotonNetwork.isMasterClient)
         {
-            Debug.Log("OnPhotonPlayerConnected() " + other.NickName); // not seen if you're the player connecting
-            for(int i=0; i<6;++i)
-            {
-                if (m_player_list[i] == "")
+            Debug.Log("OnPhotonPlayerConnected() " + other.NickName); // not seen if you're the player connecting      
+            for (int i = 0; i < 6; ++i) {
+                if (player_list_class.playerList[i] == "")
                 {
-                    m_player_list[i] = other.NickName;
-                    
+                    player_list_class.playerList[i] = other.NickName;
+                    break;
+                }
+            }      
+            SendPlayer(player_list_class.playerList);                  
+        }
+    }
+    //플레이어 디스커넥팅 함수
+    public override void OnPhotonPlayerDisconnected(PhotonPlayer other)
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            Debug.Log("OnPhotonPlayerDisconnected() " + other.NickName); // seen when other disconnects 
+            for (int i = 0; i < 6; ++i)
+            {
+                if (player_list_class.playerList[i] == other.NickName)
+                {
+                    player_list_class.playerList[i] = "";
                     break;
                 }
             }
-            Update_player_list();          
-            SendPlayer(m_player_list);                  
+            SendPlayer(player_list_class.playerList);
         }
-    }   
+    }
+    #endregion
 
-
-    public static void SendPlayer(string[] playerID)
+#region RPC 함수들
+    public static void SendPlayer(string[] list)
     {
         Debug.Log("rpc:player ");
-        ScenePhotonView.RPC("Send_Playerlist", PhotonTargets.All, playerID);
+        ScenePhotonView.RPC("Send_Playerlist", PhotonTargets.All, list);
     }
 
     public static void ChangePlayer_Chracter(int num,string playerID)
@@ -91,37 +160,33 @@ public class PhotonGameManager : Photon.PunBehaviour,IPunObservable
         Debug.Log("rpc:Chracter ");
         ScenePhotonView.RPC("Change_Chracter", PhotonTargets.All, num,playerID);
     }
-
-
-
-    //플레이어 디스커넥팅 함수
-    public override void OnPhotonPlayerDisconnected(PhotonPlayer other)
+    [PunRPC]
+    void Send_Playerlist(string[] list)
     {
-        if (PhotonNetwork.isMasterClient)
-        {
-            Debug.Log("OnPhotonPlayerDisconnected() " + other.NickName); // seen when other disconnects
-            for (int i = 0; i < 6; ++i)
-            {
-                if (m_player_list[i] == other.NickName)
-                {
-                    m_player_list[i] = "";
-                    break;
-                }
-            }
-            Update_player_list();
-        }
+        player_list_class.playerList = list;
+        player_list_class.SetPlayer_number();
+        Update_player_list();
+        Debug.Log("플레이어리스트갱신");
     }
 
-  
-    //마스터클라이언트만 누르면 반응하는 게임 시작 버튼
-    public void StartGame()
+    [PunRPC]
+    void Change_Chracter(int num, string name)
     {
-        if (PhotonNetwork.isMasterClient)
-        {
-            Debug.Log("마스터클라이언트가 시작을 눌렀습니다.");
-            PhotonNetwork.LoadLevel("GameScene");
-        }
+        text_player_chracter_list[num].text = name;
+        Debug.Log(num + "번호 변경 : " + name);
     }
+    [PunRPC]
+    public void StartGameSetting()
+    {
+        inGameorRobby = true;
+        tapPannel.SetActive(false);
+        lobbyPannel.SetActive(false);
+        Debug.Log("게임 시작 세팅(패널숨기기)");
+    }
+
+    #endregion
+
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {       
@@ -135,33 +200,17 @@ public class PhotonGameManager : Photon.PunBehaviour,IPunObservable
             // Network player, receive data
             //this.player_list_class.current_player_number = (int)stream.ReceiveNext();
         }        
-    }
-
-    
+    }    
 
     #region private 함수
     private void Update_player_list()
-    {
-       for(int i=0;i<6;++i)
+    {        
+       for(int i=0;i< 6; ++i)
         {
-            text_player_list[i].text = m_player_list[i];
+            text_player_list[i].text = player_list_class.playerList[i];
         }
     }
 
-
-    [PunRPC]
-    void Send_Playerlist(string[] list)
-    {
-        m_player_list = list;
-        Debug.Log("rpc_playerlist");
-        Update_player_list();
-        Debug.Log("플레이어리스트갱신");
-    }
-
-    [PunRPC]
-    void Change_Chracter(int num,string name)
-    {
-        text_player_chracter_list[num].text = name;
-    }
+   
     #endregion
 }

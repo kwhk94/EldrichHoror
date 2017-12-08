@@ -7,11 +7,15 @@ public class Chracter : MonoBehaviour {
 	public Location start_location;
 	public string start_location_name;
 
+    private PhotonView photonView;
 
-	public virtual void Awake()
-	{
-		Find_start_location (start_location_name);
-	}
+    private void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+        //자기자신이 아닐 때, 하지않는다.
+        if (!photonView.isMine)
+            return;
+    }
 
 
     public virtual void Player_Skill()
@@ -19,9 +23,9 @@ public class Chracter : MonoBehaviour {
         Debug.Log("스킬없음");
     }
 
-	public void Find_start_location(string name)
+	public Location Find_start_location()
 	{
-		start_location = GameObject.Find (name).GetComponent<Location> ();
+		return start_location = GameObject.Find (start_location_name).GetComponent<Location> ();
 	}
 
 

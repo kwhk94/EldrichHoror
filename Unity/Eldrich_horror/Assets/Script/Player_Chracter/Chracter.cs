@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class Chracter : MonoBehaviour {
 
-	public Location start_location;
+	
 	public string start_location_name;
 
-    private PhotonView photonView;
-
-    private void Start()
-    {
-        photonView = GetComponent<PhotonView>();
-        //자기자신이 아닐 때, 하지않는다.
-        if (!photonView.isMine)
-            return;
-    }
-
-
+    private Location start_location;
+    
+    
     public virtual void Player_Skill()
     {
         Debug.Log("스킬없음");

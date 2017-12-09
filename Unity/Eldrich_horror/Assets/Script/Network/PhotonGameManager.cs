@@ -97,6 +97,11 @@ public class PhotonGameManager : Photon.PunBehaviour, IPunObservable
         }
     }
 
+    public void MakePhotonView()
+    {
+        ScenePhotonView = gameObject.AddComponent<PhotonView>() as PhotonView;
+    }
+
 
     #endregion
 
@@ -178,6 +183,7 @@ public class PhotonGameManager : Photon.PunBehaviour, IPunObservable
     [PunRPC]
     public void StartGameSetting()
     {
+        Destroy(ScenePhotonView);
         inGameorRobby = true;
         tapPannel.SetActive(false);
         lobbyPannel.SetActive(false);

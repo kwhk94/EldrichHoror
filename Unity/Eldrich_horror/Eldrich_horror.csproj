@@ -319,6 +319,7 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+    <Compile Include="Assets\PlayerUI.cs" />
     <Compile Include="Assets\Script\Location.cs" />
     <Compile Include="Assets\Script\Network\PhotonGameManager.cs" />
     <Compile Include="Assets\Script\Player_Chracter\Chracter.cs" />

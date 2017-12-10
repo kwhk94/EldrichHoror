@@ -112,3 +112,6 @@ E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngi
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.pdb
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Photon3Unity3D.dll
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\websocket-sharp.dll
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Photon3Unity3D.xml

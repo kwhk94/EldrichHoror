@@ -133,7 +133,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.SecretAgent
 96582cbb5a9ab10be6abda594c65a150 Assembly-CSharp.dll:.UI_moveicon
-aab81d32da40e0d281c5210319880305 Assembly-CSharp.dll:.GameSystem
+39acb7e2e219dab66625a7be4cd21e76 Assembly-CSharp.dll:.GameSystem
 4ce2b1853c9a392b036a6a654be90ccb Assembly-CSharp.dll:.OnClickInstantiate
 a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.Follower
 5f1ee95103896e75aa6e6b415add844b Assembly-CSharp.dll:.ChannelSelector
@@ -144,7 +144,7 @@ cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Displace
 ada54cb428213a7e0c4b986e95788f97 Assembly-CSharp.dll:.PhotonTransformView
 c0ad1fb5d400aa83cb257e5f6c3714cf Assembly-CSharp.dll:.OnClickDestroy
-90be01dcc822927b4ed61f6e8a66ec63 Assembly-CSharp.dll:.Player
+b901791d4beac86fb1916e4e0e584cf3 Assembly-CSharp.dll:.Player
 30c6237931168f8b4c2f10a656a47aa8 Assembly-CSharp.dll:.PickupItem
 b9efe2a0d1c9ba7bc46e66a07a897115 Assembly-CSharp.dll:.ServerSettings
 193bab750082b7155b15efdc912fcb3c Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.Launcher
@@ -186,6 +186,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 ee8540d1efea9148410a914295c889e3 Assembly-CSharp.dll:.OnJoinedInstantiate
 fe180736ec3bd9cf69fd20bbec04acfb Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.LoaderAnime
+1d9dee2ba0c66527915301bcc7cade03 Assembly-CSharp.dll:.chracter_number
 6b7f3b627f03aa2dae54ad0ecb0a7d7a Assembly-CSharp.dll:.PhotonLagSimulationGui
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 ec0082b40adf3b0930cd87250ffdbf1d Assembly-CSharp.dll:.SupportLogger
@@ -203,4 +204,4 @@ a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.Chracter
 604f5f55c1cc414f64da1990b36ff015 Assembly-CSharp.dll:.PhotonView
 b2dc25029b6f083ffbbdf9df269f825a Assembly-CSharp.dll:.InRoomChat
 8ecec768d2ae4f1f35e7ed32efc53ce2 Assembly-CSharp.dll:.CameraSystem
-1d9dee2ba0c66527915301bcc7cade03 Assembly-CSharp.dll:.chracter_number
+f65b7e8bce25d5d386691252d4404e0f Assembly-CSharp.dll:.PlayerUI

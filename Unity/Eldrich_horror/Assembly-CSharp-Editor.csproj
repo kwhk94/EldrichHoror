@@ -146,9 +146,6 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
- <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
- </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>E:/Git_EldrichHorror/EldrichHorror/Unity/Eldrich_horror/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
  </Reference>

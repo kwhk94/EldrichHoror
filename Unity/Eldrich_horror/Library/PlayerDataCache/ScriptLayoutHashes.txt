@@ -134,6 +134,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.SecretAgent
 96582cbb5a9ab10be6abda594c65a150 Assembly-CSharp.dll:.UI_moveicon
 39acb7e2e219dab66625a7be4cd21e76 Assembly-CSharp.dll:.GameSystem
+f65b7e8bce25d5d386691252d4404e0f Assembly-CSharp.dll:.PlayerUI
 4ce2b1853c9a392b036a6a654be90ccb Assembly-CSharp.dll:.OnClickInstantiate
 a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.Follower
 5f1ee95103896e75aa6e6b415add844b Assembly-CSharp.dll:.ChannelSelector
@@ -204,4 +205,3 @@ a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.Chracter
 604f5f55c1cc414f64da1990b36ff015 Assembly-CSharp.dll:.PhotonView
 b2dc25029b6f083ffbbdf9df269f825a Assembly-CSharp.dll:.InRoomChat
 8ecec768d2ae4f1f35e7ed32efc53ce2 Assembly-CSharp.dll:.CameraSystem
-f65b7e8bce25d5d386691252d4404e0f Assembly-CSharp.dll:.PlayerUI

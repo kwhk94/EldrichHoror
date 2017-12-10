@@ -131,12 +131,12 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.SecretAgent
+8fe52852126e371de06f2c1907acbf4b Assembly-CSharp.dll:.SecretAgent
 96582cbb5a9ab10be6abda594c65a150 Assembly-CSharp.dll:.UI_moveicon
-39acb7e2e219dab66625a7be4cd21e76 Assembly-CSharp.dll:.GameSystem
+c18a8178fe40d107b4d229760540a606 Assembly-CSharp.dll:.GameSystem
 f65b7e8bce25d5d386691252d4404e0f Assembly-CSharp.dll:.PlayerUI
 4ce2b1853c9a392b036a6a654be90ccb Assembly-CSharp.dll:.OnClickInstantiate
-a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.Follower
+8fe52852126e371de06f2c1907acbf4b Assembly-CSharp.dll:.Follower
 5f1ee95103896e75aa6e6b415add844b Assembly-CSharp.dll:.ChannelSelector
 090584907af2e462994cc893ced507b3 Assembly-CSharp.dll:.PhotonRigidbodyView
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.IgnoreUiRaycastWhenInactive
@@ -145,7 +145,7 @@ cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Displace
 ada54cb428213a7e0c4b986e95788f97 Assembly-CSharp.dll:.PhotonTransformView
 c0ad1fb5d400aa83cb257e5f6c3714cf Assembly-CSharp.dll:.OnClickDestroy
-b901791d4beac86fb1916e4e0e584cf3 Assembly-CSharp.dll:.Player
+0d0228f618a1fcd98871644c0044949a Assembly-CSharp.dll:.Player
 30c6237931168f8b4c2f10a656a47aa8 Assembly-CSharp.dll:.PickupItem
 b9efe2a0d1c9ba7bc46e66a07a897115 Assembly-CSharp.dll:.ServerSettings
 193bab750082b7155b15efdc912fcb3c Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.Launcher
@@ -168,6 +168,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 accd7670b3286abc420292c7dfad94dd Assembly-CSharp.dll:.UI_move_scrip
 21984f001d5a114ee9fbf62810ee8eb7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.SpecularLighting
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PointedAtGameObjectInfo
+82171a9d83c0e53f2ed744e300601213 Assembly-CSharp.dll:.UI_CardSystem
 2c62b9ae79b8b54dd7b55fa7d311452b Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Water
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 2a56361227def9f56c2cf57a88b32f4d UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
@@ -191,7 +192,7 @@ fe180736ec3bd9cf69fd20bbec04acfb Assembly-CSharp.dll:ExitGames.Demos.DemoAnimato
 6b7f3b627f03aa2dae54ad0ecb0a7d7a Assembly-CSharp.dll:.PhotonLagSimulationGui
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 ec0082b40adf3b0930cd87250ffdbf1d Assembly-CSharp.dll:.SupportLogger
-b5547447d9db775213b8508e896a4c2d Assembly-CSharp.dll:.Location
+98d900128974416e981493063dcdf90d Assembly-CSharp.dll:.Location
 1356b4a6096c35c829823b7e28399030 Assembly-CSharp.dll:.ShowStatusWhenConnecting
 298901e5fd6ccf8cd5b55cb6018e6abe Assembly-CSharp.dll:.PickupItemSimple
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.GerstnerDisplace
@@ -201,7 +202,7 @@ d1755adc44fcb9e44c42a5889d35f7a0 Assembly-CSharp.dll:.MoveByKeys
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.QuitOnEscapeOrBack
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.PlayerNameInputField
 47d4dbb91b8073a64be47276b7d4f29a Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.GameManager
-a04d5d2148b13cd25f0eead456c4ac64 Assembly-CSharp.dll:.Chracter
+8fe52852126e371de06f2c1907acbf4b Assembly-CSharp.dll:.Chracter
 604f5f55c1cc414f64da1990b36ff015 Assembly-CSharp.dll:.PhotonView
 b2dc25029b6f083ffbbdf9df269f825a Assembly-CSharp.dll:.InRoomChat
 8ecec768d2ae4f1f35e7ed32efc53ce2 Assembly-CSharp.dll:.CameraSystem

@@ -77,6 +77,7 @@ E:\Git_EldrichHorror\EldrichHorror-master\Unity\Eldrich_horror\obj\Debug\Assembl
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\nunit.framework.dll
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Photon3Unity3D.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEditor.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.Analytics.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.dll
@@ -89,6 +90,7 @@ E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngi
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.Timeline.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.UI.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.UIAutomation.dll
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\websocket-sharp.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Unity.Cecil.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Unity.SerializationLogic.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\ExCSS.Unity.dll
@@ -109,9 +111,7 @@ E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngi
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.HoloLens.xml
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
-E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Photon3Unity3D.xml
+E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.dll
 E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\obj\Debug\Assembly-CSharp-firstpass.pdb
-E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Photon3Unity3D.dll
-E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\websocket-sharp.dll
-E:\Git_EldrichHorror\EldrichHorror\Unity\Eldrich_horror\Temp\bin\Debug\Photon3Unity3D.xml

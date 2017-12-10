@@ -34,10 +34,11 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
     public UI_moveicon symptom_icon;
     public delegate void UI_event();
     public event UI_event UI_eventlist;
-   
+
     //현재 단계
     public Text game_Order_Text;
-
+	public LobbyPlayerlist player_list_class;
+	public GameRuleSerealize gameRule = new GameRuleSerealize();
    
     #endregion
 
@@ -45,7 +46,7 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
     private PhotonView photonView;
 
     //게임의 정보를 저장한 클래스
-    private GameRuleSerealize gameRule = new GameRuleSerealize();
+    
 
 
     #endregion
@@ -56,6 +57,7 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
         //씬이 바뀔 때마다 포톤 뷰의 ID값이 갱신되는데, 
         //이전 포톤뷰가 안지워지면 ID가 중복되어 지우고 다시만든다.
         PhotonGameManager.Instance.MakePhotonView();
+		player_list_class = LobbyPlayerlist.Instance;
         
 
         photonView = GetComponent<PhotonView>();
@@ -66,11 +68,10 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
 		GameObject player_UI = PhotonNetwork.Instantiate("UI/" + "ChracterUI"
 			, new Vector3(91f, 610f, 0f), Quaternion.Euler(0,0,180), 0);   
         Debug.Log("캐릭터 이름 :" + temp_player.GetComponent<Player>().chracter_name);
-
-        gameRule.gameOrder = Game_order_Name.Myth;
-        gameRule.actionName = Action_Name.Deal;
-        
+ 
     }
+
+
     
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -78,12 +79,13 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
         if (stream.isWriting)
         {
             gameRule.SereializeSend(stream, info);
-            game_Order_Text.text = gameRule.gameOrder.ToString();
+            game_Order_Text.text = gameRule.gameOrder.ToString() + "\n" + gameRule.actionName.ToString();
+            
         }
         else
         {
             gameRule.SereializeReceive(stream, info);
-            game_Order_Text.text = gameRule.gameOrder.ToString();
+            game_Order_Text.text = gameRule.gameOrder.ToString() + "\n" + gameRule.actionName.ToString();
         }
         
     }
@@ -102,9 +104,7 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
         }
         //상단 ui 에니메이션
         if(UI_eventlist != null)
-            UI_eventlist();
-
-       
+            UI_eventlist();      
     }
 
     void Update()
@@ -116,13 +116,6 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
             //photonView.RPC("Changecurrent_order", PhotonTargets.All, current_order);
         }
     }
-
-    [PunRPC]
-    public void Change_GameRule(GameRuleSerealize temp)
-    {
-        gameRule = temp;
-    }
-
 }
 
 #region 직렬화한 클래스
@@ -131,11 +124,14 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
 public class GameRuleSerealize
 {
     //행동, 조우,신화 단계
-    public Game_order_Name gameOrder;
+    public Game_order_Name gameOrder = Game_order_Name.Action;
     //액션 단계 이름
-    public Action_Name actionName;
+    public Action_Name actionName = Action_Name.Deal;
 
-#region Sereialize 보내기 받기
+	public int current_player= 0;
+	public int start_player = 0;
+
+    #region Sereialize 보내기 받기
     public void SereializeSend(PhotonStream stream, PhotonMessageInfo info)
     {
         stream.SendNext(this.gameOrder);

@@ -12,27 +12,66 @@ public class Location : MonoBehaviour {
 
     public Type_loc MainType;
     public Type_sub SubType;
+    public bool moveSelect = false;
     //경로 리스트
     public MeshRenderer[] Location_Path;
     //장소 리스트
     public Location[] Location_list;
 
+    private RaycastHit hit;
+    private int LocationMask;
+
+    public void Start()
+    {
+        LocationMask = LayerMask.GetMask("Location");
+    }
+
     private void OnMouseEnter()
     {
-        for(int i=0;i<Location_Path.Length ;++i)
-        {
-            //마우스가 올려지면 경로를 보여준다.
-            Location_Path[i].enabled = true;
-        }
+        if (moveSelect)
+            return;
+        LocationPathOnOff(true);
     }
     private void OnMouseExit()
     {
-        for (int i = 0; i < Location_Path.Length; ++i)
+        if (moveSelect)
+            return;
+        LocationPathOnOff(false);
+    }
+
+    private void OnMouseDown()
+    {
+        //플레이어 자기 자신의 턴에
+        if (!Player.instance.photonView.isMine)
+            return;
+        //움직임이 가능하고, 이동단계일 때
+        if(moveSelect && GameSystem.Instance.gameRule.gameOrder == Game_order_Name.Action && GameSystem.Instance.gameRule.actionName == Action_Name.Move)
         {
-            //마우스가 올려지면 경로를 꺼버린다.
-            Location_Path[i].enabled = false;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LocationMask))
+                Player.instance.agent.SetDestination(hit.point);
         }
     }
 
-    
+    public void LocationPathOnOff(bool onoff)
+    {
+        for (int i = 0; i < Location_Path.Length; ++i)
+        {
+            //마우스가 올려지면 경로를 보여준다.
+            Location_Path[i].enabled = onoff;
+        }
+    }
+
+    public void Location_listOnOff(bool onoff)
+    {
+        for (int i = 0; i < Location_list.Length; ++i)
+        {
+            //마우스가 올려지면 경로를 보여준다.
+            Location_list[i].GetComponent<MeshRenderer>().enabled =onoff;
+            Location_list[i].moveSelect = true;
+        }
+    }
+
+
+
 }

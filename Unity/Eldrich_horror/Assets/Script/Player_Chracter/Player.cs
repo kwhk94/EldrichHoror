@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class Player : Photon.PunBehaviour, IPunObservable
 {
 
+    #region 싱글톤
     public static Player instance;
+ 
+    #endregion
     #region public 변수
     public string chracter_name = "Follower";
 	public Chracter player_chracter;
@@ -26,20 +29,23 @@ public class Player : Photon.PunBehaviour, IPunObservable
     private GameObject child;
     private bool cardSelectonoff = false;
 
-    
-
-    private void Start()
-    {        
-        player_number = LobbyPlayerlist.Instance.current_player_number;
-		gamesystem = GameSystem.Instance;
+    private void Awake()
+    {
         photonView = GetComponent<PhotonView>();
-        agent = GetComponent<NavMeshAgent>();
-        cardSystem = UI_CardSystem.Instance;
         if (photonView.isMine)
         {
-            instance = this;           
+            instance = this;
         }
+    }
 
+
+    private void Start()
+    {
+       
+        player_number = LobbyPlayerlist.Instance.current_player_number;
+		gamesystem = GameSystem.Instance;       
+        agent = GetComponent<NavMeshAgent>();
+        cardSystem = UI_CardSystem.Instance;
         agent.enabled = false;
         child = GetComponentInChildren<Chracter>().gameObject;
         player_chracter = child.GetComponent<Chracter>();
@@ -53,23 +59,24 @@ public class Player : Photon.PunBehaviour, IPunObservable
 		//자가 아닌 플레이어는 제외한다.
         if (!photonView.isMine)
             return;
+
 		//게임 현재 플레이어를 확인하여 업데이트한다.
 		if (gamesystem.gameRule.current_player == player_number) {
 			switch (gamesystem.gameRule.gameOrder) {
-			//액션
-			case Game_order_Name.Action:
+			     //액션
+			     case Game_order_Name.Action:
                     //카드 선택한 후에만 실행
-                    if(cardSystem.cardSelectonoff)
-                        ActionFuc();
-                    else
-                    {
-                        if (inout_bool)
-                        {
-                            inout_bool = false;
-                            cardSystem.SetActionCardlist(true);
+                        if(cardSystem.cardSelectonoff)
+                            ActionFuc();
+                        else{
+                        //처음 한번만 실행하게 하는 변수값
+                            if (inout_bool){
+                                inout_bool = false;
+                                cardSystem.SetActionCardlist(true);
+                            }
                         }
-                    }
-					break;
+					    break;
+
 				//조우
 				case Game_order_Name.Meeting:
 					break;
@@ -80,6 +87,25 @@ public class Player : Photon.PunBehaviour, IPunObservable
 			
 		}       
     }
+    #region 트리거 함수
+    public void OnTriggerEnter(Collider other)
+    {
+        //자기 이외라면 제외
+        if (!photonView.isMine) return;
+
+        //이동시 자기 이외의 장소로 가면 이동 액션을 멈춘다.
+        if (GameSystem.Instance.gameRule.gameOrder == Game_order_Name.Action && GameSystem.Instance.gameRule.actionName == Action_Name.Move)
+        {
+            if (other.GetComponent<Location>() != currentLocation)
+            {
+                currentLocation.Location_listOnOff(false);
+                //다른 장소로 도착시 현재 장소를 다른장소로바꿈
+                currentLocation = other.GetComponent<Location>();
+                EndAction();
+            }
+        }
+    }
+#endregion
 
     #region 행동 단계 함수들
     void ActionFuc()
@@ -111,22 +137,7 @@ public class Player : Photon.PunBehaviour, IPunObservable
         }
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        //자기 이외라면 제외
-        if (!photonView.isMine) return;
-
-        //이동시 자기 이외의 장소로 가면 이동 액션을 멈춘다.
-        if (GameSystem.Instance.gameRule.gameOrder == Game_order_Name.Action && GameSystem.Instance.gameRule.actionName == Action_Name.Move)
-        {
-            if(other.GetComponent<Location>() != currentLocation)
-            {
-                //다른 장소로 도착시 현재 장소를 다른장소로바꿈
-                currentLocation = other.GetComponent<Location>();
-                EndAction();
-            }
-        }       
-    }
+   
 
     //액션이 종료시 호출되는 함수
     void EndAction()
@@ -146,26 +157,25 @@ public class Player : Photon.PunBehaviour, IPunObservable
 
     #endregion
 
-
+    #region 동기화 함수
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             playerdata.SerializeSend(stream, info);
-            //Debug.Log("hp 정보 보내기 : " + m_hp + photonView.owner);
         }
         else
         {
             playerdata.SerializeReceive(stream, info);
-            //Debug.Log("hp 정보 변환 : " + m_hp+ photonView.owner);
         }
     }
+#endregion
 
     #region RPC 함수
     [PunRPC]
     void ChangeChracternumber()
     {
-        GameSystem.Instance.gameRule.current_player = (GameSystem.Instance.gameRule.current_player+1)%LobbyPlayerlist.Instance.playerList.Length;
+        GameSystem.Instance.gameRule.current_player = (GameSystem.Instance.gameRule.current_player+1)%PhotonNetwork.playerList.Length;
         
         if (GameSystem.Instance.gameRule.current_player == GameSystem.Instance.gameRule.start_player)
         {

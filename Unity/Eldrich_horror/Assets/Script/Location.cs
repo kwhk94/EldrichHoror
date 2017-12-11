@@ -64,11 +64,17 @@ public class Location : MonoBehaviour {
 
     public void Location_listOnOff(bool onoff)
     {
+        moveSelect = onoff;
         for (int i = 0; i < Location_list.Length; ++i)
         {
             //마우스가 올려지면 경로를 보여준다.
             Location_list[i].GetComponent<MeshRenderer>().enabled =onoff;
-            Location_list[i].moveSelect = true;
+            Location_list[i].moveSelect = onoff;
+        }
+        for (int i = 0; i < Location_Path.Length; ++i)
+        {
+            //마우스가 올려지면 경로를 보여준다.
+            Location_Path[i].enabled = onoff;
         }
     }
 

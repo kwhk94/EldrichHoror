@@ -46,14 +46,15 @@ public class UI_CardSystem : MonoBehaviour {
         photonview.photonView.RPC("ChangeActionName", PhotonTargets.MasterClient, Action_Name.Move);
     }
 
+
+    #region RPC 함수들
+
+    [PunRPC]
     public void ChangeActionName(Action_Name type)
     {
         GameSystem.Instance.gameRule.actionName = type;
         Debug.Log("게임시스템 액션 이름 바꾸기 : " + type.ToString());
     }
-    #region RPC 함수들
-
-
 
     #endregion
 

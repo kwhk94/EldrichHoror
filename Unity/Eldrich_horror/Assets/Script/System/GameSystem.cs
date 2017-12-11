@@ -46,34 +46,31 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
     private PhotonView photonView;
 
     //게임의 정보를 저장한 클래스
-    
+
 
 
     #endregion
 
+    //포톤게임메니져(로비메니져)에서 지웠던 포톤 뷰를 다시 만든다.
+    //씬이 바뀔 때마다 포톤 뷰의 ID값이 갱신되는데, 
+    //이전 포톤뷰가 안지워지면 ID가 중복되어 지우고 다시만든다.
     private void Start()
-    {
-        //포톤게임메니져(로비메니져)에서 지웠던 포톤 뷰를 다시 만든다.
-        //씬이 바뀔 때마다 포톤 뷰의 ID값이 갱신되는데, 
-        //이전 포톤뷰가 안지워지면 ID가 중복되어 지우고 다시만든다.
+    {        
         PhotonGameManager.Instance.MakePhotonView();
 		player_list_class = LobbyPlayerlist.Instance;
-        
-
         photonView = GetComponent<PhotonView>();
-        
         //플레이어 프리팹 생성
         GameObject temp_player = PhotonNetwork.Instantiate("Chracter/" + LobbyPlayerlist.Instance.Charcter_list[LobbyPlayerlist.Instance.current_chracter_number].name
             , new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+        //플레이어 UI 생성
 		GameObject player_UI = PhotonNetwork.Instantiate("UI/" + "ChracterUI"
 			, new Vector3(91f, 610f, 0f), Quaternion.Euler(0,0,180), 0);   
-        Debug.Log("캐릭터 이름 :" + temp_player.GetComponent<Player>().chracter_name);
- 
+        Debug.Log("캐릭터 이름 :" + temp_player.GetComponent<Player>().chracter_name); 
     }
 
 
-    
 
+    #region 동기화 함수
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -89,6 +86,8 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
         }
         
     }
+
+#endregion
 
     public void LateUpdate()
     {
@@ -136,11 +135,15 @@ public class GameRuleSerealize
     {
         stream.SendNext(this.gameOrder);
         stream.SendNext(this.actionName);
+        stream.SendNext(this.current_player);
+        stream.SendNext(this.start_player);
     }
     public void SereializeReceive(PhotonStream stream, PhotonMessageInfo info)
     {
         this.gameOrder = (Game_order_Name)stream.ReceiveNext();
         this.actionName = (Action_Name)stream.ReceiveNext();
+        this.current_player = (int)stream.ReceiveNext();
+        this.start_player = (int)stream.ReceiveNext();
     }
 #endregion
 

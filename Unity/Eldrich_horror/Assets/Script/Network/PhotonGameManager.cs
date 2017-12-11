@@ -145,6 +145,10 @@ public class PhotonGameManager : Photon.PunBehaviour, IPunObservable
                 if (player_list_class.playerList[i] == other.NickName)
                 {
                     player_list_class.playerList[i] = "";
+                    for(int j = i; j<5; ++j)
+                    {
+                        player_list_class.playerList[j] = player_list_class.playerList[j + 1];
+                    }
                     break;
                 }
             }

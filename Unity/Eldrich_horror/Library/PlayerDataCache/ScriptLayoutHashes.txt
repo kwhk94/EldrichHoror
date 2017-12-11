@@ -145,7 +145,7 @@ cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Displace
 ada54cb428213a7e0c4b986e95788f97 Assembly-CSharp.dll:.PhotonTransformView
 c0ad1fb5d400aa83cb257e5f6c3714cf Assembly-CSharp.dll:.OnClickDestroy
-0d0228f618a1fcd98871644c0044949a Assembly-CSharp.dll:.Player
+575678fdd581f55dd20e1f9bd6e0ab91 Assembly-CSharp.dll:.Player
 30c6237931168f8b4c2f10a656a47aa8 Assembly-CSharp.dll:.PickupItem
 b9efe2a0d1c9ba7bc46e66a07a897115 Assembly-CSharp.dll:.ServerSettings
 193bab750082b7155b15efdc912fcb3c Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.Launcher

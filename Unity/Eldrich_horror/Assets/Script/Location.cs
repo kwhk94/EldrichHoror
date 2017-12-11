@@ -29,13 +29,19 @@ public class Location : MonoBehaviour {
     private void OnMouseEnter()
     {
         if (moveSelect)
+        {
+            LocationOnOff(true);
             return;
+        }
         LocationPathOnOff(true);
     }
     private void OnMouseExit()
     {
         if (moveSelect)
+        {
+            LocationOnOff(false);
             return;
+        }
         LocationPathOnOff(false);
     }
 
@@ -61,14 +67,16 @@ public class Location : MonoBehaviour {
             Location_Path[i].enabled = onoff;
         }
     }
+    public void LocationOnOff(bool onoff)
+    {
+        Location_Path[0].enabled = onoff;
+    }
 
     public void Location_listOnOff(bool onoff)
     {
         moveSelect = onoff;
         for (int i = 0; i < Location_list.Length; ++i)
         {
-            //마우스가 올려지면 경로를 보여준다.
-            Location_list[i].GetComponent<MeshRenderer>().enabled =onoff;
             Location_list[i].moveSelect = onoff;
         }
         for (int i = 0; i < Location_Path.Length; ++i)

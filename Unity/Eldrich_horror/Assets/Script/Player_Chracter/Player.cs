@@ -14,6 +14,7 @@ public class Player : Photon.PunBehaviour, IPunObservable
     public string chracter_name = "Follower";
 	public Chracter player_chracter;
 	public int player_number ;
+    public string player_name;
 	public GameSystem gamesystem;
     public PlayerDataClass playerdata;
     public Location currentLocation;
@@ -43,22 +44,33 @@ public class Player : Photon.PunBehaviour, IPunObservable
     {
        
         player_number = LobbyPlayerlist.Instance.current_player_number;
-		gamesystem = GameSystem.Instance;       
+        player_name = PhotonNetwork.player.NickName;
+        gamesystem = GameSystem.Instance;       
         agent = GetComponent<NavMeshAgent>();
         cardSystem = UI_CardSystem.Instance;
         agent.enabled = false;
         child = GetComponentInChildren<Chracter>().gameObject;
+       
         player_chracter = child.GetComponent<Chracter>();
+        playerdata = player_chracter.data;
+
         currentLocation = player_chracter.Find_start_location();
         transform.position = currentLocation.transform.position;
         agent.enabled = true;
+        //이름과 번호 동기화
+        if(photonView.isMine)
+        {
+            photonView.RPC("SyncPlayerNameNumber", PhotonTargets.All, player_number, player_name);
+        }
     }
 
     public void LateUpdate()
     {
-		//자가 아닌 플레이어는 제외한다.
+        //자가 아닌 플레이어는 제외한다.
         if (!photonView.isMine)
+        {
             return;
+        }
 
 		//게임 현재 플레이어를 확인하여 업데이트한다.
 		if (gamesystem.gameRule.current_player == player_number) {
@@ -99,9 +111,9 @@ public class Player : Photon.PunBehaviour, IPunObservable
             if (other.GetComponent<Location>() != currentLocation)
             {
                 currentLocation.Location_listOnOff(false);
-                //다른 장소로 도착시 현재 장소를 다른장소로바꿈
-                currentLocation = other.GetComponent<Location>();
+                //다른 장소로 도착시 현재 장소를 다른장소로바꿈               
                 EndAction();
+                currentLocation = other.GetComponent<Location>();
             }
         }
     }
@@ -151,7 +163,7 @@ public class Player : Photon.PunBehaviour, IPunObservable
         }
         else
         {
-            photonView.RPC("ChangeChracternumber", PhotonTargets.MasterClient);
+            photonView.RPC("ChangeChracternumber", PhotonTargets.MasterClient,Game_order_Name.Action);
         }
     }
 
@@ -173,15 +185,21 @@ public class Player : Photon.PunBehaviour, IPunObservable
 
     #region RPC 함수
     [PunRPC]
-    void ChangeChracternumber()
-    {
+    void ChangeChracternumber(Game_order_Name name)
+    {        
+        currentActionPoint = 2;
         GameSystem.Instance.gameRule.current_player = (GameSystem.Instance.gameRule.current_player+1)%PhotonNetwork.playerList.Length;
-        
+        cardSystem.cardSelectonoff = false;
         if (GameSystem.Instance.gameRule.current_player == GameSystem.Instance.gameRule.start_player)
         {
-
+            GameSystem.Instance.gameRule.gameOrder = name;
         }
-
+    }
+    [PunRPC]
+    void SyncPlayerNameNumber(int num, string name)
+    {
+        this.player_number = num;
+        this.player_name = name;
     }
     #endregion
 
@@ -219,4 +237,5 @@ public class PlayerDataClass
         mp = (int)stream.ReceiveNext();
         power = (int)stream.ReceiveNext();
     }
+    
 }

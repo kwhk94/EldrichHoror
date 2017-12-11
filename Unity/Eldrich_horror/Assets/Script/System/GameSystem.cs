@@ -32,6 +32,8 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
     #region public변수
     public UI_moveicon ruin_icon;
     public UI_moveicon symptom_icon;
+    public GameObject whoPlayer;
+    public Text whopalyerText;
     public delegate void UI_event();
     public event UI_event UI_eventlist;
 
@@ -103,7 +105,16 @@ public class GameSystem : Photon.PunBehaviour, IPunObservable
         }
         //상단 ui 에니메이션
         if(UI_eventlist != null)
-            UI_eventlist();      
+            UI_eventlist();    
+        if(LobbyPlayerlist.Instance.current_player_number == gameRule.current_player)
+        {
+            whoPlayer.SetActive(false);
+        }
+        else
+        {
+            whoPlayer.SetActive(true);
+            whopalyerText.text = LobbyPlayerlist.Instance.playerList[gameRule.current_player].ToString();
+        }
     }
 
     void Update()
